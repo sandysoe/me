@@ -21,12 +21,12 @@ some_words = ["what", "does", "this", "line", "do", "?"]
 
 for word in some_words:
     print(word)
-
+# I think this will print "word" by calling the print function.
 for x in some_words:
-    print(x)
+    print(x)  # it printed "x" as some_words by calling the print function.
 
 print(some_words)
-
+# I think this will print "What does this line do ?" by calling the print function.
 if len(some_words) > 3:
     print("some_words contains more than 3 words")
 

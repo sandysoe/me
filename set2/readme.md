@@ -1,1 +1,2 @@
 TODO: Reflect on what you learned this week and what is still unclear.
+Set 2 was a little bit tricky as we learnt how to modify different functions depending on what each doc string is asking for. In exercise 0 we learnt how to use string formatting in python. Although it would be a bit difficult as times when my lines of code would be entered incorrectly, I would be unable to successfully run my code as many errors would appear. To correct this, I had to re-evaluate. 
