@@ -77,7 +77,21 @@ def wordy_pyramid():
     ]
     TIP: to add an argument to a URL, use: ?argName=argVal e.g. &wordlength=
     """
+
+    base_url = "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word"
     pyramid = []
+
+    for length in range(3, 21, 2):
+        url = f"{base_url}?wordlength={length}"
+        response = requests.get(url)
+        if response.status_code == 200:
+            word = response.text.strip()
+            pyramid.append(word)
+        else:
+            print(f"Failed to fetch word of length {length} from the generator.")
+
+    reversed_pyramid = pyramid[-2:0:-1]
+    pyramid.extend(reversed_pyramid)
 
     return pyramid
 
