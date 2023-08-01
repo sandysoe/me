@@ -1,1 +1,8 @@
 TODO: Reflect on what you learned this week and what is still unclear.
+
+This week's exercises included reading JSON files, parsing it into dictionaries and extracting specific pieces of information. For the "get_some_details" function, I had to recognise the function's docstring in which it took some time for me to familiarize the structure of the JSON data from the lazyduck.json file. To be able to successfully work with the JSON data, the JSON library was previously imported which provided methods to load JSON data from another file and convert it into a python dictionary. For example, to get last name, password and ID value, I had to manipulate the dictionary structure. 
+
+The function also required error handling to deal with invalid data or any potential issues that may arise during the process. I implemented a try-except block to handle possible ValueError when converting user input to an integer.
+After completing the function, I tested it using the given JSON data to make sure that it correctly returned the expected results.
+
+I really enjoyed completing the "word_pyramid" function as it involved generating real words from an external website service with a variety of word lengths. The aim was to generate words from the website and arranging them in a pyramid-like format, stepping up 2 letters at a time. The pyramid was required to have steps increasing by 2 letters each time, starting from 3 letters up to 20 letters. Although,  I considered the setbacks of performance aspects, as generating words from a web service could create delays due to network inconsistencies. However, the provided web service was relatively fast, so performance concerns were minimal in this situation.

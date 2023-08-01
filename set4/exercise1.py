@@ -37,10 +37,22 @@ def get_some_details():
          dictionary, you'll need integer indeces for lists, and named keys for
          dictionaries.
     """
-    json_data = open(LOCAL + "/lazyduck.json").read()
+    with open(LOCAL + "/lazyduck.json") as f:
+        json_data = f.read()
 
     data = json.loads(json_data)
-    return {"lastName": None, "password": None, "postcodePlusID": None}
+
+    last_name = data["results"][0]["name"]["last"]
+    password = data["results"][0]["login"]["password"]
+    postcode_plus_id = data["results"][0]["location"]["postcode"] + int(
+        data["results"][0]["id"]["value"]
+    )
+
+    return {
+        "lastName": last_name,
+        "password": password,
+        "postcodePlusID": postcode_plus_id,
+    }
 
 
 def wordy_pyramid():
@@ -110,13 +122,31 @@ def pokedex(low=1, high=5):
          get very long. If you are accessing a thing often, assign it to a
          variable and then future access will be easier.
     """
-    id = 5
-    url = f"https://pokeapi.co/api/v2/pokemon/{id}"
-    r = requests.get(url)
-    if r.status_code is 200:
-        the_json = json.loads(r.text)
 
-    return {"name": None, "weight": None, "height": None}
+    import requests
+    import json
+
+
+def pokedex(low=1, high=5):
+    tallest_pokemon = {"name": None, "weight": None, "height": None, "height_m": 0}
+
+    for pokemon_id in range(low, high + 1):
+        url = f"https://pokeapi.co/api/v2/pokemon/{pokemon_id}"
+        r = requests.get(url)
+        if r.status_code == 200:
+            the_json = json.loads(r.text)
+            name = the_json["name"].capitalize()
+            weight = the_json["weight"]
+            height = the_json["height"]
+            height_m = height / 10.0
+
+            if height_m > tallest_pokemon["height_m"]:
+                tallest_pokemon["name"] = name
+                tallest_pokemon["weight"] = weight
+                tallest_pokemon["height"] = height
+                tallest_pokemon["height_m"] = height_m
+
+    return tallest_pokemon
 
 
 def diarist():
@@ -136,7 +166,21 @@ def diarist():
 
     NOTE: this function doesn't return anything. It has the _side effect_ of modifying the file system
     """
-    pass
+    input_file_path = "Set4/Trispokedovetiles(laser).gcode"
+    output_file_path = "Set4/lasers.pew"
+
+    with open(input_file_path, "r") as file:
+        content = file.read()
+
+    count_laser_on_off = content.count("M10 P1")
+
+    count_string = str(count_laser_on_off)
+
+    with open(output_file_path, "w") as file:
+        file.write(count_string)
+
+
+diarist()
 
 
 if __name__ == "__main__":
