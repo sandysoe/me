@@ -1,1 +1,6 @@
 TODO: Reflect on what you learned this week and what is still unclear.
+This week I focused on the structure of my presentation for the open data project. Throughout the process of analysing my data, I had to consistently ensure that my dataset's quality was essential. I had to check for missing values, outliers, and data integrity issues. If necessary, perform data cleaning and preprocessing to prepare the data for analysis. 
+
+As python offers a wide range of data analysis libraries such as Pandas, NumPy, and Matplotlib, I had to familiarize myself with these libraries since it is crucial for efficient data manipulation, visualization, and analysis. My next step was to formulate a hypothesis or set of research questions that you want to explore in the dataset. This will guide my analysis through the presentation and help the class focus on specific aspects of my data.
+
+I also must consider the organization of my findings in a logical order to create a narrative flow for my presentation. Ensuring that  the presentation flows smoothly and that the class can easily understand my analysis and conclusions. 

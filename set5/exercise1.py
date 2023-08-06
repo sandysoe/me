@@ -50,8 +50,39 @@ def wordy_pyramid():
     return pyramid_list
 
 
+def wordy_pyramid():
+    baseURL = (
+        "https://us-central1-waldenpondpress.cloudfunctions.net/"
+        "give_me_a_word?wordlength={length}"
+    )
+    pyramid_list = []
+    for i in range(3, 21, 2):
+        url = baseURL.format(length=i)
+        r = requests.get(url)
+        if r.status_code is 200:
+            message = r.text
+            pyramid_list.append(message)
+        else:
+            print("failed a request", r.status_code, i)
+    for i in range(20, 3, -2):
+        url = baseURL.format(length=i)
+        r = requests.get(url)
+        if r.status_code is 200:
+            message = r.text
+            pyramid_list.append(message)
+        else:
+            print("failed a request", r.status_code, i)
+
+    return pyramid_list
+
+
 def get_a_word_of_length_n(length):
-    pass
+    pyramid_list = wordy_pyramid()
+
+    # Find the word with the desired length in the pyramid_list
+    for word in pyramid_list:
+        if len(word) == length:
+            return word
 
 
 def list_of_words_with_lengths(list_of_lengths):
